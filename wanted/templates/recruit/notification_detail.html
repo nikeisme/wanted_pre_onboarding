@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    채용공고 id : {{ notification.no_id  }} <br>
+    회사명:{{ notification.company }} <br>
+    국가 : {{ notification.country }} <br>
+    지역 : {{ notification.region }}  <br>
+    채용포지션 : {{ notification.position }} <br>
+    채용보상금 : {{ notification.reward }} <br>
+    사용기술 : {{ notification.technique }} <br>
+    채용내용 :  {{ notification.content }} <br>
+    다른 채용공고 :  {{ another }} <br>
+
+</div>
+<div>
+    채용내용:
+    {% if notification.company in another %}
+    {{ notification.company }}
+    {% else %}
+    <ul>
+        <li>또 다른 공고가 없습니다.</li> 
+    </ul>
+    {% endif %}
+</div>
+<br>
+<div>
+    <h5>지원 여부</h5>
+    {% if notification.user_set.all %}
+    {% for user in notification.user_set.all %}
+    <ul>{{ user.user_id }} 님, 지원 완료 되었습니다.</ul>
+    {% endfor %}
+    {% else %}
+    <ul>지원하지않았습니다.</ul>
+    {% endif %}
+</div>
+
+<div class="my-3">
+    <a href="{% url 'recruit:notification_modify' notification.id  %}" 
+       class="btn btn-sm btn-outline-secondary">수정</a>
+    <a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary"
+       data-uri="{% url 'recruit:notification_delete' notification.id  %}">삭제</a>
+</div>
+<form action="{% url 'recruit:user_apply' notification.id %}" method="post">
+    {% csrf_token %}
+    <textarea name="user_id" id="user_id"></textarea>
+    <input type="submit" value="id 입력 후 클릭하면 지원 완료">
+    </form>
+{% endblock %}
+{% block script %}
+<script type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
+{% endblock %}
