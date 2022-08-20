@@ -26,7 +26,6 @@ def detail(request,notification_id): # 상세페이지
         #     # d['company_id'] = v['company_id']
            print(v)
 
-       
     # print(notification.company)
     
 

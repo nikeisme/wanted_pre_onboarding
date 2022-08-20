@@ -27,11 +27,11 @@
             <th>사용기술</th>
         </tr>
         </thead>
-        <tbody>
-        {% if notification_list %}
+        <tbody class="notification_list",id =main-area>
+        {% if notification_list.exists %}
         {% for notification in notification_list %}
         <tr>
-            <td>{{ forloop.counter }}</td>
+            <td>{{ forloop.counter }}</td>  
             <td><a href="{% url 'recruit:detail' notification.id %}">{{ notification.no_id }}</a></td>
             <td>{{ notification.company }}</td>
             <td>{{ notification.country }}</td>
@@ -41,11 +41,12 @@
             <td>{{ notification.technique }}</td>
         </tr>
         {% endfor %}
-        {% else %}
+    {% else %}
         <tr>
             <td colspan="3">채용 공고가 없습니다.</td>
+            <h3>채용 공고가 없습니다.</h3>
         </tr>
-        {% endif %}
+    {% endif %}
         </tbody>
     </table>
 </div>
