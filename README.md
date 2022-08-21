@@ -41,7 +41,7 @@
          └─ notification_list.html
 ```
 <h2>💡EER Diagram<h2>
-![image](https://user-images.githubusercontent.com/99165573/185777583-4023dc71-f4a4-439f-b154-463279c197c9.png)
+![image](https://user-images.githubusercontent.com/99165573/185777690-d9727baa-b3e4-405c-a283-8db57ee3992c.png)
 
 <h2>💡구현 목록<h2>  
 1.채용공고 등록 <br>
@@ -51,3 +51,5 @@
 5.채용공고 검색 <br>
 6.채용공고 상세 페이지 <br>
 7.채용공고 지원
+
+
