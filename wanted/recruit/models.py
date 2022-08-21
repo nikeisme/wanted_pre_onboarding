@@ -6,7 +6,7 @@ class Company(models.Model): # 회사 필드
     def __str__(self):
         return self.co_id
 
-class Notification(models.Model):
+class Notification(models.Model): # 모델 필드
     company = models.ForeignKey(Company, on_delete = models.CASCADE)
     no_id = models.TextField()
     country = models.TextField()
