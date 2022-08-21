@@ -18,16 +18,18 @@ def index(request):
 def detail(request,notification_id): # 상세페이지
     notification = get_object_or_404(Notification,pk=notification_id)
     another= Notification.objects.exclude(id=notification_id).values()
-    a = []
-    d = {}
-    for v in another:
-        # print(v['company_id'])
-        if v['company_id'] == notification.__str__():
-        #     # d['company_id'] = v['company_id']
-           print(v)
+    
+    # 회사가 올린 다른 채용공고 구현 시도
+    # a = []
+    # d = {}
+    # for v in another:
+    #     # print(v['company_id'])
+    #     if v['company_id'] == notification.__str__():
+    #     #     # d['company_id'] = v['company_id']
+    #        print(v)
 
        
-    # print(notification.company)
+    # # print(notification.company)
     
 
     context = {'notification': notification, 'another':another}
@@ -45,12 +47,13 @@ def notification_create(request): # 채용공고 등록
         context = {'form': form}
         return render(request, 'recruit/notification_form.html', context)
 
+# 채용공고 지원
 def user_apply(request, notification_id):
     notification = get_object_or_404(Notification, pk=notification_id)
     notification.user_set.create(user_id=request.POST.get('user_id'))
     return redirect('recruit:detail', notification_id=notification.id)
 
-
+# 채용공고 수정
 def notification_modify(request, notification_id): # 채용 공고 수정
     notification = get_object_or_404(Notification, pk=notification_id)
     if request.method == "POST":
@@ -64,7 +67,7 @@ def notification_modify(request, notification_id): # 채용 공고 수정
     context = {'form': form}
     return render(request, 'recruit/notification_form.html', context)
 
-
+# 채용공고 삭제
 def notification_delete(request, notification_id): # 채용 공고 삭제
     notification= get_object_or_404(Notification, pk=notification_id)
     notification.delete()

@@ -1,7 +1,7 @@
 from django import forms
 from recruit.models import Notification
 
-
+# 채용공고 지원폼
 class NotificationForm(forms.ModelForm):
     class Meta:
         model = Notification  # 사용할 모델

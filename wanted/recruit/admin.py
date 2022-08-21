@@ -6,5 +6,3 @@ from .models import User
 admin.site.register(Notification)
 admin.site.register(Company)
 admin.site.register(User)
-
-

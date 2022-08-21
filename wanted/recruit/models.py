@@ -1,28 +1,29 @@
 from django.db import models
 
 class Company(models.Model): # 회사 필드
-    co_id = models.TextField(primary_key=True)
+
+    co_id = models.TextField(primary_key=True) #회사id
     
     def __str__(self):
         return self.co_id
 
 class Notification(models.Model): # 모델 필드
-    company = models.ForeignKey(Company, on_delete = models.CASCADE)
-    no_id = models.TextField()
-    country = models.TextField()
-    region = models.TextField()
-    position = models.TextField()
-    reward=models.PositiveIntegerField()
-    content=models.TextField()
-    technique=models.TextField()
+    company = models.ForeignKey(Company, on_delete = models.CASCADE)#회사id
+    no_id = models.TextField() # 채용공고id
+    country = models.TextField() # 국가
+    region = models.TextField() # 지역
+    position = models.TextField() # 포지션
+    reward=models.PositiveIntegerField() # 채용보상금
+    content=models.TextField() # 채용내용
+    technique=models.TextField() #사용기술
 
     def __str__(self):
         return self.company
 
 
-class User(models.Model):
-    user_id = models.TextField(unique=True)
-    apply_id = models.ForeignKey(Notification,on_delete=models.CASCADE)
+class User(models.Model): # 유저(지원자) 필드
+    user_id = models.TextField(unique=True) # 유저id
+    apply_id = models.ForeignKey(Notification,on_delete=models.CASCADE) # 채용공고id
 
 
 
