@@ -18,6 +18,22 @@ def index(request):
 def detail(request,notification_id): # 상세페이지
     notification = get_object_or_404(Notification,pk=notification_id)
     another= Notification.objects.exclude(id=notification_id).values()
+    context = {'notification': notification, 'another':another}
+    return render(request, 'recruit/notification_detail.html', context)
+
+
+def another_page(request,slug):
+    another = Notification.objects.get(slug=slug)
+    notification_list = another.notification_set.all()
+
+    return render(
+        request,
+        'recruit/notification_list.html',
+        {
+            'notification_list' : notification_list,
+            'another' : another,
+        }
+    )
     
     # 회사가 올린 다른 채용공고 구현 시도
     # a = []
@@ -32,8 +48,6 @@ def detail(request,notification_id): # 상세페이지
     # # print(notification.company)
     
 
-    context = {'notification': notification, 'another':another}
-    return render(request, 'recruit/notification_detail.html', context)
 
 def notification_create(request): # 채용공고 등록
      if request.method == 'POST':

@@ -60,10 +60,10 @@
 #      self.assertEqual(response.status_code, 200)
 #      soup = BeautifulSoup(response.content, 'html.parser')
 
-    # # main area에 공고 2개가 존재
-    #  main_area = soup.find('tbody', id = 'main-area')
-    #  self.self.assertIn( post_001.no_id, )
-    #  self.self.assertIn( post_002.no_id, main_area.text)
+#     # main area에 공고 2개가 존재
+#      main_area = soup.find('tbody', id = 'main-area')
+#      self.self.assertIn( post_001.no_id, )
+#      self.self.assertIn( post_002.no_id, main_area.text)
 
-    #  # '아직 채용공고가 없습니다'라는 문구가 안나타나도 됨
-    #  self.self.assertNotIn('채용 공고가 없습니다', main_area.text)
+#      # '아직 채용공고가 없습니다'라는 문구가 안나타나도 됨
+#      self.self.assertNotIn('채용 공고가 없습니다', main_area.text)

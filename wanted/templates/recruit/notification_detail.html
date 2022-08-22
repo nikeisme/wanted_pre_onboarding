@@ -9,18 +9,18 @@
     채용보상금 : {{ notification.reward }} <br>
     사용기술 : {{ notification.technique }} <br>
     채용내용 :  {{ notification.content }} <br>
-    다른 채용공고 :  {{ another }} <br>
-
 </div>
 <div>
-    채용내용:
-    {% if notification.company in another %}
-    {{ notification.company }}
-    {% else %}
-    <ul>
-        <li>또 다른 공고가 없습니다.</li> 
-    </ul>
+    관련 다른 채용 공고:
+    {% if notification.anoters.exists%}
+        <i class="fas fa-tags"></i>
+        {% for another in notification.anothers.all %}
+            <a href="{{another.get_absolute_url}}" class="badge badge-light">{{another}}</a>
+        {% end for %}
+        <br/>
+        <br/>
     {% endif %}
+    {% if another %}<span class="badge badge-secondary">{{ tag }}</span>{% endif %}
 </div>
 <br>
 <div>

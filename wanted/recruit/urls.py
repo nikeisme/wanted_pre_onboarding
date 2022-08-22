@@ -22,4 +22,7 @@ urlpatterns = [
 
     # 채용공고 삭제
     path('notification/delete/<int:notification_id>/', views.notification_delete, name='notification_delete'),
+
+    # 회사가 올린 다른 채용 공고
+    path('another/<str:slug/', views.another_page),
 ]
