@@ -82,7 +82,6 @@
 <img src ="https://user-images.githubusercontent.com/99165573/185779484-5b887135-60f8-4c2a-aab1-d4c9e069407c.gif">
 <img src ="https://user-images.githubusercontent.com/99165573/185780344-a28e8185-2745-4fbf-84aa-1252ba152540.png">
   <h3> 회사명,국가,지역,자격요건 등 채용공고에 관한 상세내용을 볼 수 있습니다.<h3>
-  <h3> 회사가 올린 다른 채용공고 구현은 성공하지 못했습니다.<h3><br><br>
 7. 채용공고에 지원합니다.<br>
 <img src ="https://user-images.githubusercontent.com/99165573/185779588-b7e1da26-cd42-42ac-8b82-65d741246907.gif">
 <img src ="https://user-images.githubusercontent.com/99165573/185780849-7116613a-3c6c-4f0e-8217-a0edd1ef87fd.png">
