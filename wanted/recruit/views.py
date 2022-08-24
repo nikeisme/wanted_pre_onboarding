@@ -17,36 +17,22 @@ def index(request):
 
 def detail(request,notification_id): # 상세페이지
     notification = get_object_or_404(Notification,pk=notification_id)
-    another= Notification.objects.exclude(id=notification_id).values()
-    context = {'notification': notification, 'another':another}
+    another= Notification.objects.exclude(id=notification_id).values() # 해당 채용공고 외 다른 채용공고들
+    
+    no = list() # no라는 빈공간 list 만들기
+
+    for v in another:
+        # print(v['company_id']) 
+        if v['company_id'] == str(notification.__str__()): # 다른 채용공고 회사 id와 해당 페이지 채용공고 회사id 비교 if문
+            # print("같아")  
+            v['no_id']   
+            print(v['no_id'])
+            no.append(v['no_id']) #no list안에 넣기
+
+    
+    context = {'notification': notification,'another':no}
     return render(request, 'recruit/notification_detail.html', context)
 
-
-def another_page(request,slug):
-    another = Notification.objects.get(slug=slug)
-    notification_list = another.notification_set.all()
-
-    return render(
-        request,
-        'recruit/notification_list.html',
-        {
-            'notification_list' : notification_list,
-            'another' : another,
-        }
-    )
-    
-    # 회사가 올린 다른 채용공고 구현 시도
-    # a = []
-    # d = {}
-    # for v in another:
-    #     # print(v['company_id'])
-    #     if v['company_id'] == notification.__str__():
-    #     #     # d['company_id'] = v['company_id']
-    #        print(v)
-
-       
-    # # print(notification.company)
-    
 
 
 def notification_create(request): # 채용공고 등록

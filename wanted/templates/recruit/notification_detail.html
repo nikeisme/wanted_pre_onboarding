@@ -11,16 +11,12 @@
     채용내용 :  {{ notification.content }} <br>
 </div>
 <div>
-    관련 다른 채용 공고:
-    {% if notification.anoters.exists%}
-        <i class="fas fa-tags"></i>
-        {% for another in notification.anothers.all %}
-            <a href="{{another.get_absolute_url}}" class="badge badge-light">{{another}}</a>
-        {% end for %}
-        <br/>
-        <br/>
-    {% endif %}
-    {% if another %}<span class="badge badge-secondary">{{ tag }}</span>{% endif %}
+    <!-- <ul>
+     {% for no in another %}
+        <li>관련 다른 채용 공고: {{ no }}</li>
+        {% endfor %} -->
+        회사가올린다른채용공고: {{another}}
+
 </div>
 <br>
 <div>
